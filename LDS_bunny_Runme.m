@@ -1,10 +1,10 @@
 clear; clc; close all
 
 %% load geometry
-%load small_bunny_mesh2D.mat;
-%load small_bunny_mesh2D_vfine.mat
-load small_bunny_mesh3D.mat;
-%load small_bunny_mesh3D_fine.mat;
+%load input_meshes/small_bunny_mesh2D.mat;
+%load input_meshes/small_bunny_mesh2D_vfine.mat
+load input_meshes/small_bunny_mesh3D.mat;
+%load input_meshes/small_bunny_mesh3D_fine.mat;
 
 
 %define boundary conditions
@@ -18,7 +18,7 @@ forced = find(NC(:,1)>15);
 %% Generate Output Plot
 figure
 patch('faces',DT.ConnectivityList,'vertices',NC+D,'FaceColor','w','handlevisibility','off');hold on
-plotV(NC(fixed,:)+D(fixed,:),'ro')
-plotV(NC(forced,:)+D(forced,:),'bo')
+plotV(NC(fixed,:)+D(fixed,:),'r.','markersize',20)
+plotV(NC(forced,:)+D(forced,:),'b.','markersize',20)
 legend('fixed','loaded'); axis equal
 if size(NC,2)>2; axisGeom; end; gdrawnow()

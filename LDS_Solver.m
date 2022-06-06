@@ -48,7 +48,6 @@ end
 fixed =  find(NC(:,1)==min(NC(:,1)));       %all nodes where x-coord
 forced = find(NC(:,1)==max(NC(:,1)));       %all nodes where x-coord
 
-
 if length(varargin)>0
     if ~isempty(varargin{1})
         if numel(varargin{1}) == 1

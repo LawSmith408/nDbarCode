@@ -18,6 +18,8 @@
 
 %load: a [dx1] vector containing the total force applied to the loaded
 %nodes. If omitted, d = [0 -1]' or [0 0 -1]' a unit force in the -vertical direction.
+%if dimension is [dxn] where n is the number of loaded nodes, individual
+%loads are applied to each n node
 
 %OUTPUTS:
 
@@ -83,8 +85,13 @@ free = free(:);
 
 % Construct load vector
 F = zeros(size(NC))';
+if size(load,2)==1 %if load direction is constant across all loaded nodes
 F(:,forced) = F(:,forced)+load(:)./numel(forced);  %node-wise force is distributed load mag
+else
+F(:,forced) = load;
+end
 F = F(:);
+
 
 A    = 1e-5;                        %cross sectional area of bar elements
 IND = zeros(size(LI,1)*nel_k,2);    % index matr used for local stiffness

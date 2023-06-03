@@ -121,7 +121,7 @@ D=struct('m',m,'n',n,'Coord',Coord','Con',Con','Re',Re',...
     'J',J','St',St','be',be');
 
 %solve
-[Q,V,R]=MSA(D);
+[~,V,R]=MSA(D);
 
 %extract
 if dim==2

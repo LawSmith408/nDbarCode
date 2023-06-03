@@ -6,7 +6,7 @@
 % DT: a struct containing a triangular or tetrahedral traingulation
 
 %Optional Inputs:
-% Evec: [ex1] vector containing the elastic modulus of each bar in the
+% Evec: [ex1] vector containing the elastic modulus*area of each bar in the
 % mesh where e is the number of edges in the triangulation. If omitted,
 % Evec = ones(e,1)
 
@@ -92,8 +92,6 @@ F(:,forced) = load;
 end
 F = F(:);
 
-
-A    = 1e-5;                        %cross sectional area of bar elements
 IND = zeros(size(LI,1)*nel_k,2);    % index matr used for local stiffness
 K1 = zeros(size(LI,1)*nel_k,1);     %empty accumulation matrix
 
@@ -103,7 +101,7 @@ for j = 1:size(LI,1)
     [j1, j2] = meshgrid(reshape(ID(LI(j,:),:)',[],1)');
     IND((j-1)*nel_k+1:j*nel_k,:) = [j1(:) j2(:)];
     V = NC(LI(j,:),:);
-    k = eMat(j)*A*barLocalStiffness(V);
+    k = eMat(j)*barLocalStiffness(V);
     K1((j-1)*nel_k+1:j*nel_k) = k(:);
 end
 

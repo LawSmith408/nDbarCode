@@ -89,13 +89,14 @@ if length(varargin)>4
     end
 end
 
+% If this is a 2D problem, add a third column of zeros to the coordinates
 if dim==3
     Coord = NC;
 elseif dim == 2
     Coord = [NC zeros(size(NC,1),1)]; %coordinates of nodes
 end
 
-LI = [LI ones(size(LI,1),2)];    %connectivity of each node and whether rotational dofs are held
+Con = [LI ones(size(LI,1),2)];    %connectivity of each node and whether rotational dofs are held
 
 %apply fixed boundary conditions
 Re = zeros(n,6);                 
@@ -121,7 +122,7 @@ D=struct('m',m,'n',n,'Coord',Coord','Con',Con','Re',Re',...
     'J',J','St',St','be',be');
 
 %solve
-[~,V,R]=MSA(D);
+[~,V,~]=MSA(D);
 
 %extract
 if dim==2

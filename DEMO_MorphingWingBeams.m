@@ -178,10 +178,13 @@ D=struct('m',m,'n',n,'Coord',Coord','Con',Con','Re',Re',...
     'Load',Load','w',w','E',E','G',G','A',A','Iz',Iz','Iy',Iy',...
     'J',J','St',St','be',be');
 
+%Use MSA to solve for displacements
 [Q,V,R]=MSA(D);
 
+%extract displacements
 U = V(1:2,:)';
 
+%plot undeformed and deformed results
 figure
 patch('Faces',Ft,'Vertices',Vt,'facecolor','none','edgecolor',[0.8 0.8 0.8],...
     'linewidth',1.5,'displayname','Lattice Struts','handlevisibility','off')

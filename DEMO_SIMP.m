@@ -45,7 +45,7 @@ S = deformedStressPlot(DT,D,eMat,0);
 
 if i>1 && plotme
 cla
-deformedDensityPlot(DT,D,rescale(rho)); 
+rhoPlot(DT,rho); 
 plotV(Vt(fixed,:),'b.','markersize',20)
 plotV(Vt(forced,:),'r.','markersize',20)
 drawnow();
@@ -59,6 +59,7 @@ for j = 1:length(eMat)
     u = D(LI(j,:),:)';
     dcdx(j) = p*rho(j)^(p-1)*(Emax-Emin)*u(:)'*k*u(:);
     dvdx(j) = 
+    %NNN
 end
 
 %update density

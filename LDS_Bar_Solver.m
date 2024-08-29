@@ -121,7 +121,7 @@ D(free) = d;                %Assemble full Displacement Matrix
 C = F'*D;                   %compute compliance
 D = reshape(D,dim,[])';     %reshape into same dimensionality as NC
 
-fprintf('Solved %.i DOF in %.3fs, Compliance = %.2f\n',numel(d),toc,C)
+fprintf('Solved %.i DOF in %.3fs, Compliance = %.2e\n',numel(d),toc,C)
 
 end
 

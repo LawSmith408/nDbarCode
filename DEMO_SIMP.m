@@ -58,12 +58,16 @@ for j = 1:length(eMat)
     k = eMat(j)*barLocalStiffness(V);
     u = D(LI(j,:),:)';
     dcdx(j) = p*rho(j)^(p-1)*(Emax-Emin)*u(:)'*k*u(:);
-    dvdx(j) = 
-    %NNN
+    dvdx(j) = 0; %this is not correct - it should be the volume derivative
+    
+%MISSING THE REMAINDER OF THIS SECTION
+
 end
 
 %update density
 rho = rho.*(rescale(dcdx(:)).^0.05);
+
+%saturate
 rho(rho<rhomin) = rhomin;
 rho(rho>rhomax) = rhomax;
 

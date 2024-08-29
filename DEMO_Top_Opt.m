@@ -62,6 +62,7 @@ subplot(1,2,2)
 histogram(rho,0:0.05:1,'Normalization','probability')
 ylim([0 1]);
 xlabel('element densities')
+ylabel('norm. frequency')
 
 drawnow();
 
